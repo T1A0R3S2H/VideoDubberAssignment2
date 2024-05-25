@@ -1,0 +1,57 @@
+.cardbox {
+  /* border: 1px solid lightgray; */
+  width: 100px;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 250px;
+  height: 250px;
+  z-index: 10;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+  cursor: pointer;
+}
+
+.cardtop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+
+  p {
+    font-size: 0.75rem;
+    color: rgb(116, 115, 115);
+  }
+}
+
+.cardbox h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 10px;
+}
+
+.card-options {
+  font-size: 13px;
+}
+
+.optn {
+  margin-top: 7px;
+}
+
+.optn:nth-child(2) {
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+.activeCard {
+  /* background-color: white; */
+}

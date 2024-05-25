@@ -1,0 +1,22 @@
+.settingCard {
+  /* border: 1px solid seagreen; */
+  width: 300px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  position: absolute;
+  right: 10px;
+  bottom: 170px;
+  z-index: 1000;
+}
+
+.settingCard-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.65;
+  margin: 5px;
+}
+
+.select {
+  width: 24%;
+}
