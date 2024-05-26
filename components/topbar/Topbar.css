@@ -40,7 +40,10 @@ a {
   background-color: #f18914;
   color: white;
   font-weight: 600;
-  padding: 8px 10px;
+  padding: 5px 8px;
+  display: flex;
+  align-items: center;
+  border-radius: 7px;
 }
 
 .upgrade:hover {
@@ -50,13 +53,18 @@ a {
 .icon-bg {
   background-color: #e37608;
   color: white;
-  padding: 15px 10px;
+  padding: 5px 3px;
   border-radius: 10px;
   margin-left: 5px;
 }
 
 .done {
   background-color: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 5px 8px;
+  border-radius: 7px;
 }
 
 .check-icon {

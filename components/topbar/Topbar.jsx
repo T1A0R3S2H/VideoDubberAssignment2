@@ -22,15 +22,15 @@ const Topbar = () => {
       <Group className="top-right">
         <a href="">Sign Up</a>
         <a href="">Log In</a>
-        <Button className="upgrade">
+        <button className="upgrade">
           Upgrade
           <Box className="icon-bg">
             <AiOutlineThunderbolt />
           </Box>
-        </Button>
-        <Button className="done">
+        </button>
+        <button className="done">
           Done <FaCheck className="check-icon" />
-        </Button>
+        </button>
       </Group>
     </Group>
   );
