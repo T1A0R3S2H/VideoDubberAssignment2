@@ -1,3 +1,4 @@
+"use client";
 import { Box, Button, Autocomplete, Group, ColorInput } from "@mantine/core";
 import "./Buttons.css";
 import { BsThreeDots } from "react-icons/bs";
@@ -6,18 +7,29 @@ import { RiSpeedUpLine } from "react-icons/ri";
 import { MdAnimation } from "react-icons/md";
 import { TbTransitionRightFilled } from "react-icons/tb";
 import { SiCodemagic } from "react-icons/si";
+import { useState } from "react";
 
-const Buttons = () => {
+const Buttons = ({ setAspectRatio, setColor }) => {
+  const [selectedOption, setSelectedOption] = useState("Wide Landscape (16:9)");
   const data = ["YouTube (16:9)", "YouTube Short (9:16)", "TikTok (9:16)", "Instagram Post (1:1)", "Instagram Story (9:16)", "Instagram Reel (9:16)", "LinkedIn (1:1)", "X (Twitter) (1:1)", "Facebook Post (1:1)", "Facebook Story (9:16)", "Facebook Video (1:1)", "Snapchat (9:16)", "Tall Potrait (9:16)", "Potrait (4:5)", "Square (1:1)", "Landscape (5:4)", "Wide Landscape (16:9)"];
 
+  const handleOptionChange = (option) => {
+    setSelectedOption(option);
+    // Extract aspect ratio from the selected option
+    const aspectRatio = option.split("(")[1]?.split(")")[0].replace(":", "/");
+    if (aspectRatio) {
+      setAspectRatio(aspectRatio);
+      // console.log(aspectRatio);
+    }
+  };
   return (
     <Box className="buttons">
       <Box className="none">
         <Box className="none-btn">
-          <Autocomplete className="autocomplete" placeholder="Pick value or enter anything" data={data} withScrollArea={false} styles={{ dropdown: { maxHeight: 200, overflowY: "auto" } }} comboboxProps={{ dropdownPadding: 10 }} />
+          <Autocomplete className="autocomplete" placeholder="Pick value or enter anything" data={data} withScrollArea={false} styles={{ dropdown: { maxHeight: 200, overflowY: "auto" } }} comboboxProps={{ dropdownPadding: 10 }} value={selectedOption} onChange={handleOptionChange} />
         </Box>
         <Box className="none-btn">
-          <ColorInput placeholder="Background" />
+          <ColorInput placeholder="Background" onChangeEnd={setColor} />
         </Box>
       </Box>
       {/* <Box className="audio">

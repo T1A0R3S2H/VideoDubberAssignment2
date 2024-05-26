@@ -14,23 +14,30 @@ export default function Home() {
   const [activeCard, setActiveCard] = useState(false);
   const [addFileWindow, setAddFileWindow] = useState(false);
   const [fileType, setFileType] = useState("none");
+  const [aspectRatio, setAspectRatio] = useState("16/9");
+  const [color, setColor] = useState("#000000");
+  console.log(color);
+  // console.log(aspectRatio);
+  // console.log(fileType);
   return (
     <Group className="main-window" gap="0">
-      {addFileWindow && <Addfile setAddFileWindow={setAddFileWindow} seFileType={setFileType} />}
+      {addFileWindow && <Addfile setAddFileWindow={setAddFileWindow} setFileType={setFileType} />}
       {activeCard && <Card activeCard={activeCard} setActiveCard={setActiveCard} />}
       <Navbar activeCard={activeCard} setActiveCard={setActiveCard} />
       <Box className="edit-window">
         <Group gap="0">
-          <Box className="project-settings">Project Settings</Box>
+          <Box className="add-media">Project Settings</Box>
           <Box className="video-section">
             <Topbar />
             <Stack className="video-container" align="center">
-              <Box className="video">Video</Box>
-              <Buttons className="buttons" />
+              <Box className="video" style={{ aspectRatio: aspectRatio, backgroundColor: color }}>
+                Video
+              </Box>
+              <Buttons className="buttons" setAspectRatio={setAspectRatio} setColor={setColor} />
             </Stack>
           </Box>
         </Group>
-        <Footer setAddFileWindow={setAddFileWindow} />
+        <Footer setAddFileWindow={setAddFileWindow} fileType={fileType} />
       </Box>
     </Group>
   );

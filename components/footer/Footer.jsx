@@ -12,7 +12,7 @@ import { FaMagnifyingGlassMinus } from "react-icons/fa6";
 import { IoSettingsOutline } from "react-icons/io5";
 import Card from "./settingCard/Card";
 
-const Footer = ({ setAddFileWindow }) => {
+const Footer = ({ setAddFileWindow, fileType }) => {
   const [settingClicked, setSettingClicked] = useState(false);
   const [editSetting, setEditSetting] = useState("none");
 
@@ -51,11 +51,11 @@ const Footer = ({ setAddFileWindow }) => {
         </Box>
       </Box>
       <Box className="edit-area">
-        {editSetting === "none" ? (
+        {fileType === "none" ? (
           <Box className="edit-none" onClick={() => setAddFileWindow((p) => !p)}>
             <FaPlus /> Add Media to this Project
           </Box>
-        ) : editSetting === "audio" ? (
+        ) : fileType === "audio" ? (
           <Box className="edit-audio">audio</Box>
         ) : (
           <Box className="edit-video"></Box>

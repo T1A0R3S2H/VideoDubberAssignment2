@@ -12,7 +12,7 @@
   flex: 1;
 }
 
-.project-settings {
+.add-media {
   background: slateblue;
   flex: 3.05;
   height: 100vh;
@@ -26,11 +26,11 @@
 
 .video-container {
   border: 1px solid skyblue;
+  height: 68%;
   padding: 40px;
 }
 
 .video {
   border: 1px solid red;
-  width: 500px;
-  height: 300px;
+  height: 100%;
 }

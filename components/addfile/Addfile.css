@@ -25,11 +25,32 @@
   width: 750px;
   height: 200px;
   border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 
 .filebox:hover {
   border: 1px dashed #5666f5;
   background-color: #ebedff;
+}
+
+.upload-icon {
+  padding: 8px;
+  border-radius: 50%;
+  background: #5666f5;
+  color: #fff;
+  font-size: 1.25rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+a span {
+  color: #000;
 }
 
 .addfile-buttons {
