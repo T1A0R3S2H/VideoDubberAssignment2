@@ -26,7 +26,7 @@ const Addfile = ({ setAddFileWindow, setFileType }) => {
       <Box className="close-btn" onClick={() => setAddFileWindow((p) => !p)}>
         <IoCloseSharp />
       </Box>
-      <h1>Let's Make a Video!</h1>
+      <h1>Let&apos;s Make a Video!</h1>
       <Box className="filebox" {...getRootProps()}>
         <input {...getInputProps()} />
         <Box className="upload-icon">
