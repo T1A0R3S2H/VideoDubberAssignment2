@@ -1,8 +1,9 @@
 .addmedia {
   /* border: 1px solid black; */
-  height: 75vh;
+  max-height: 75vh;
   overflow-y: auto;
   padding: 20px;
+  max-width: 30vw;
 }
 
 h1 {

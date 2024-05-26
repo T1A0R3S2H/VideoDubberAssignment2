@@ -27,7 +27,7 @@ export default function Home() {
       {activeCard && <Card activeCard={activeCard} setActiveCard={setActiveCard} />}
       <Navbar activeCard={activeCard} setActiveCard={setActiveCard} />
       <Box className="edit-window">
-        <Group gap="0">
+        <Box className="edit-grp" gap="0">
           <Box className="add-media">
             <Addmedia />
           </Box>
@@ -40,7 +40,7 @@ export default function Home() {
               <Buttons className="buttons" fileType={fileType} setAspectRatio={setAspectRatio} setColor={setColor} />
             </Stack>
           </Box>
-        </Group>
+        </Box>
         <Footer setAddFileWindow={setAddFileWindow} fileType={fileType} />
       </Box>
     </Group>
