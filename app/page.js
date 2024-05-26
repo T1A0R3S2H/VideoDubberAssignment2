@@ -20,7 +20,7 @@ export default function Home() {
   const [color, setColor] = useState("#000000");
   // console.log(color);
   // console.log(aspectRatio);
-  // console.log(fileType);
+  console.log("file type is:", fileType);
   return (
     <Group className="main-window" gap="0">
       {addFileWindow && <Addfile setAddFileWindow={setAddFileWindow} setFileType={setFileType} />}
@@ -37,7 +37,7 @@ export default function Home() {
               <Box className="video" style={{ aspectRatio: aspectRatio, backgroundColor: color }}>
                 Video
               </Box>
-              <Buttons className="buttons" setAspectRatio={setAspectRatio} setColor={setColor} />
+              <Buttons className="buttons" fileType={fileType} setAspectRatio={setAspectRatio} setColor={setColor} />
             </Stack>
           </Box>
         </Group>

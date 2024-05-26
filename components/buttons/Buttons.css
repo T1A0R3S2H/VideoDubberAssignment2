@@ -62,3 +62,7 @@
 .at {
   border-right: 1.5px solid lightgray;
 }
+
+.hidden {
+  display: none;
+}

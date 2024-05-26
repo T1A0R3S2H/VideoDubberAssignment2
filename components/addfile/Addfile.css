@@ -35,6 +35,7 @@
 .filebox:hover {
   border: 1px dashed #5666f5;
   background-color: #ebedff;
+  cursor: pointer !important;
 }
 
 .upload-icon {
@@ -47,6 +48,7 @@
 
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 
 a span {
