@@ -4,7 +4,7 @@ import { Stack, Box, Slider, Switch } from "@mantine/core";
 import "./Footer.css";
 import { FiScissors } from "react-icons/fi";
 import { CiMicrophoneOn } from "react-icons/ci";
-import { FaForward } from "react-icons/fa";
+import { FaForward, FaPlus } from "react-icons/fa";
 import { FaBackward } from "react-icons/fa";
 import { FaPlay } from "react-icons/fa";
 import { FaMagnifyingGlassPlus } from "react-icons/fa6";
@@ -12,8 +12,9 @@ import { FaMagnifyingGlassMinus } from "react-icons/fa6";
 import { IoSettingsOutline } from "react-icons/io5";
 import Card from "./settingCard/Card";
 
-const Footer = () => {
+const Footer = ({ setAddFileWindow }) => {
   const [settingClicked, setSettingClicked] = useState(false);
+  const [editSetting, setEditSetting] = useState("none");
 
   return (
     <Stack className="footer" justify="flex-start" gap="0">
@@ -49,7 +50,17 @@ const Footer = () => {
           </Box>
         </Box>
       </Box>
-      <Box className="edit-area">Edit Area</Box>
+      <Box className="edit-area">
+        {editSetting === "none" ? (
+          <Box className="edit-none" onClick={() => setAddFileWindow((p) => !p)}>
+            <FaPlus /> Add Media to this Project
+          </Box>
+        ) : editSetting === "audio" ? (
+          <Box className="edit-audio">audio</Box>
+        ) : (
+          <Box className="edit-video"></Box>
+        )}
+      </Box>
     </Stack>
   );
 };

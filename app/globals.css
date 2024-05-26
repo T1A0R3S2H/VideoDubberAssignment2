@@ -8,6 +8,29 @@
 }
 
 .edit-window {
-  background: slateblue;
+  /* background: slateblue; */
   flex: 1;
+}
+
+.project-settings {
+  background: slateblue;
+  flex: 3.05;
+  height: 100vh;
+}
+
+.video-section {
+  height: 100vh;
+  /* background: springgreen; */
+  flex: 6.95;
+}
+
+.video-container {
+  border: 1px solid skyblue;
+  padding: 40px;
+}
+
+.video {
+  border: 1px solid red;
+  width: 500px;
+  height: 300px;
 }

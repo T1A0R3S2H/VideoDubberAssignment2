@@ -4,6 +4,7 @@
   bottom: 0;
   width: 94%;
   border-top: 1px solid lightgray;
+  background-color: #fff;
 }
 
 .fx {
@@ -61,6 +62,17 @@
 }
 
 .edit-area {
-  /* border: 1px solid darkblue; */
+  border: 1px solid darkblue;
   height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-none {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  gap: 5px;
+  cursor: pointer;
 }
