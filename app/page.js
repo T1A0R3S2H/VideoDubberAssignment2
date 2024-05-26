@@ -9,6 +9,8 @@ import ReactSlider from "react-slider";
 import Topbar from "@/components/topbar/Topbar";
 import Buttons from "@/components/buttons/Buttons";
 import Addfile from "@/components/addfile/Addfile";
+import Addmedia from "@/components/addmedia/Addmedia";
+import "@mantine/carousel/styles.css";
 
 export default function Home() {
   const [activeCard, setActiveCard] = useState(false);
@@ -16,7 +18,7 @@ export default function Home() {
   const [fileType, setFileType] = useState("none");
   const [aspectRatio, setAspectRatio] = useState("16/9");
   const [color, setColor] = useState("#000000");
-  console.log(color);
+  // console.log(color);
   // console.log(aspectRatio);
   // console.log(fileType);
   return (
@@ -26,7 +28,9 @@ export default function Home() {
       <Navbar activeCard={activeCard} setActiveCard={setActiveCard} />
       <Box className="edit-window">
         <Group gap="0">
-          <Box className="add-media">Project Settings</Box>
+          <Box className="add-media">
+            <Addmedia />
+          </Box>
           <Box className="video-section">
             <Topbar />
             <Stack className="video-container" align="center">

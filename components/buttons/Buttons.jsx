@@ -14,12 +14,15 @@ const Buttons = ({ setAspectRatio, setColor }) => {
   const data = ["YouTube (16:9)", "YouTube Short (9:16)", "TikTok (9:16)", "Instagram Post (1:1)", "Instagram Story (9:16)", "Instagram Reel (9:16)", "LinkedIn (1:1)", "X (Twitter) (1:1)", "Facebook Post (1:1)", "Facebook Story (9:16)", "Facebook Video (1:1)", "Snapchat (9:16)", "Tall Potrait (9:16)", "Potrait (4:5)", "Square (1:1)", "Landscape (5:4)", "Wide Landscape (16:9)"];
 
   const handleOptionChange = (option) => {
+    // console.log("option", option);
     setSelectedOption(option);
-    // Extract aspect ratio from the selected option
-    const aspectRatio = option.split("(")[1]?.split(")")[0].replace(":", "/");
+    const aspectRatio = option.split("(")[1]?.split(")")[0]?.replace(":", "/");
+    // console.log("aspectratio: ", aspectRatio);
     if (aspectRatio) {
-      setAspectRatio(aspectRatio);
-      // console.log(aspectRatio);
+      const [a, b] = aspectRatio.split("/");
+      if ((a > 1 && b > 1) || (a == 1 && b == 1)) {
+        setAspectRatio(aspectRatio);
+      }
     }
   };
   return (

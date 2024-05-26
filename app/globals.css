@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .main-window {
   /* border: 1px solid red; */
   position: relative;
@@ -13,7 +19,7 @@
 }
 
 .add-media {
-  background: slateblue;
+  /* background: slateblue; */
   flex: 3.05;
   height: 100vh;
 }
@@ -22,6 +28,7 @@
   height: 100vh;
   /* background: springgreen; */
   flex: 6.95;
+  background-color: #f7f7f8;
 }
 
 .video-container {
