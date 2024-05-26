@@ -5,19 +5,23 @@ import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { IoCloudUploadOutline } from "react-icons/io5";
 
-const Addfile = ({ setAddFileWindow, setFileType }) => {
+const Addfile = ({ setAddFileWindow, setFileType, setFile, setAudioUrl }) => {
   const onDrop = useCallback(
     (acceptedFiles) => {
       if (acceptedFiles.length > 0) {
         const file = acceptedFiles[0];
+        const url = URL.createObjectURL(file);
+        setFile(file);
+        setAddFileWindow(false);
         if (file.type.startsWith("audio")) {
           setFileType("audio");
+          setAudioUrl(url);
         } else if (file.type.startsWith("video")) {
           setFileType("video");
         }
       }
     },
-    [setFileType]
+    [setFileType, setFile, setAddFileWindow, setAudioUrl]
   );
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop });

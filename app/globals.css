@@ -32,6 +32,7 @@
 }
 
 .video-section {
+  /* max-width: 60vw; */
   max-width: 70vw;
   height: 100vh;
   /* background: springgreen; */
@@ -40,12 +41,12 @@
 }
 
 .video-container {
-  border: 1px solid skyblue;
+  /* border: 1px solid skyblue; */
   height: 68%;
   padding: 40px;
 }
 
 .video {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   height: 100%;
 }

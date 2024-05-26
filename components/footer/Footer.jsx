@@ -1,20 +1,109 @@
 "use client";
-import { useState } from "react";
-import { Stack, Box, Slider, Switch } from "@mantine/core";
+import { useState, useEffect, useRef } from "react";
+import { Stack, Box, Slider } from "@mantine/core";
 import "./Footer.css";
 import { FiScissors } from "react-icons/fi";
 import { CiMicrophoneOn } from "react-icons/ci";
-import { FaForward, FaPlus } from "react-icons/fa";
-import { FaBackward } from "react-icons/fa";
-import { FaPlay } from "react-icons/fa";
-import { FaMagnifyingGlassPlus } from "react-icons/fa6";
-import { FaMagnifyingGlassMinus } from "react-icons/fa6";
+import { FaForward, FaPlus, FaBackward, FaPlay, FaPause } from "react-icons/fa";
+import { FaMagnifyingGlassPlus, FaMagnifyingGlassMinus } from "react-icons/fa6";
 import { IoSettingsOutline } from "react-icons/io5";
 import Card from "./settingCard/Card";
+import WaveSurfer from "wavesurfer.js";
 
-const Footer = ({ setAddFileWindow, fileType }) => {
+const Footer = ({ setAddFileWindow, fileType, videoRef, audioUrl }) => {
   const [settingClicked, setSettingClicked] = useState(false);
-  const [editSetting, setEditSetting] = useState("none");
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const waveformRef = useRef(null);
+  const wavesurferRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    const updateTime = () => setCurrentTime(video.currentTime);
+    const updateDuration = () => setDuration(video.duration);
+
+    if (video) {
+      updateDuration();
+      video.addEventListener("timeupdate", updateTime);
+      video.addEventListener("durationchange", updateDuration);
+
+      return () => {
+        video.removeEventListener("timeupdate", updateTime);
+        video.removeEventListener("durationchange", updateDuration);
+      };
+    }
+  }, [videoRef]);
+
+  useEffect(() => {
+    if (fileType === "audio" && waveformRef.current && audioUrl) {
+      wavesurferRef.current = WaveSurfer.create({
+        container: waveformRef.current,
+        waveColor: "violet",
+        progressColor: "purple",
+        backend: "MediaElement",
+      });
+      wavesurferRef.current.load(audioUrl);
+
+      wavesurferRef.current.on("ready", () => {
+        setDuration(wavesurferRef.current.getDuration());
+      });
+
+      wavesurferRef.current.on("audioprocess", () => {
+        setCurrentTime(wavesurferRef.current.getCurrentTime());
+      });
+
+      wavesurferRef.current.on("seek", () => {
+        setCurrentTime(wavesurferRef.current.getCurrentTime());
+      });
+
+      return () => {
+        if (wavesurferRef.current) {
+          wavesurferRef.current.destroy();
+        }
+      };
+    }
+  }, [fileType, audioUrl]);
+
+  const handlePlayPause = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const handleForward = () => {
+    if (videoRef.current) {
+      videoRef.current.currentTime += 10;
+    }
+  };
+
+  const handleBackward = () => {
+    if (videoRef.current) {
+      videoRef.current.currentTime -= 10;
+    }
+  };
+
+  const formatTime = (time) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+  };
+
+  const handleSliderChange = (value) => {
+    const newTime = (value / 100) * duration;
+    if (videoRef.current) {
+      videoRef.current.currentTime = newTime;
+    }
+    if (wavesurferRef.current) {
+      wavesurferRef.current.seekTo(newTime / duration);
+    }
+    setCurrentTime(newTime);
+  };
 
   return (
     <Stack className="footer" justify="flex-start" gap="0">
@@ -32,11 +121,13 @@ const Footer = ({ setAddFileWindow, fileType }) => {
         </Box>
         <Box className="playAndPause fx">
           <Box className="fx">
-            <FaBackward />
-            <FaPlay />
-            <FaForward />
+            <FaBackward onClick={handleBackward} className="play" />
+            {isPlaying ? <FaPause onClick={handlePlayPause} className="play" /> : <FaPlay onClick={handlePlayPause} className="play" />}
+            <FaForward onClick={handleForward} className="play" />
           </Box>
-          <Box>00:00.0 / 01:00.0</Box>
+          <Box>
+            {formatTime(currentTime)} / {formatTime(duration)}
+          </Box>
         </Box>
         <Box className="view-controls fx">
           <Box className="slider">
@@ -56,9 +147,10 @@ const Footer = ({ setAddFileWindow, fileType }) => {
             <FaPlus /> Add Media to this Project
           </Box>
         ) : fileType === "audio" ? (
-          <Box className="edit-audio">audio</Box>
+          // <Box className="edit-audio">audio</Box>
+          <Box className="edit-audio" ref={waveformRef}></Box>
         ) : (
-          <Box className="edit-video"></Box>
+          <Box className="edit-video">video</Box>
         )}
       </Box>
     </Stack>
