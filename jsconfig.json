@@ -1,7 +1,15 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",  
     "paths": {
-      "@/*": ["./*"]
-    }
+      "@/*": ["./src/*"]
+    },
+    "module": "ESNext",
+    "target": "ESNext",
+    "lib": ["ESNext", "DOM"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   }
 }

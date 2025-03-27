@@ -38,9 +38,12 @@
     "react-resizable-box": "^2.1.0",
     "react-slider": "^2.0.6",
     "recharts": "^2.12.7",
+    "use-sync-external-store": "^1.4.0",
     "wavesurfer.js": "^7.9.3"
   },
   "devDependencies": {
+    "@types/react": "^19.0.12",
+    "@types/use-sync-external-store": "^0.0.6",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "postcss": "^8.4.38",

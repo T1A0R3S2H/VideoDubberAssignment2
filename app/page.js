@@ -1,14 +1,14 @@
 "use client";
 import { Box, Grid, Group, Slider, Stack } from "@mantine/core";
 import Navbar from "../components/navbar/Navbar";
-import Card from "@/components/navbar/HamburgerCard/Card";
+import Card from "../components/navbar/HamburgerCard/Card";
 import { useState, useRef } from "react";
 import "./globals.css";
-import Footer from "@/components/footer/Footer";
-import Topbar from "@/components/topbar/Topbar";
-import Buttons from "@/components/buttons/Buttons";
-import Addfile from "@/components/addfile/Addfile";
-import Addmedia from "@/components/addmedia/Addmedia";
+import Footer from "../components/footer/Footer";
+import Topbar from "../components/topbar/Topbar";
+import Buttons from "../components/buttons/Buttons";
+import Addfile from "../components/addfile/Addfile";
+import Addmedia from "../components/addmedia/Addmedia";
 import "@mantine/carousel/styles.css";
 
 // Add this test function after your existing imports
