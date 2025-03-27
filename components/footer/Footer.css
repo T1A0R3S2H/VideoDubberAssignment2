@@ -67,6 +67,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px dashed #ccc;
+  position: relative;
+  overflow: hidden;
 }
 
 .edit-none {
@@ -79,4 +82,46 @@
 
 .play {
   cursor: pointer;
+}
+
+.react-resizable {
+  position: relative;
+  border: 2px solid #007bff;
+  min-width: 100px;
+  min-height: 100px;
+}
+
+.react-resizable-handle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+}
+
+.react-resizable-handle-sw {
+  bottom: 0;
+  left: 0;
+  cursor: sw-resize;
+}
+
+.react-resizable-handle-se {
+  bottom: 0;
+  right: 0;
+  cursor: se-resize;
+}
+
+.react-resizable-handle-nw {
+  top: 0;
+  left: 0;
+  cursor: nw-resize;
+}
+
+.react-resizable-handle-ne {
+  top: 0;
+  right: 0;
+  cursor: ne-resize;
 }

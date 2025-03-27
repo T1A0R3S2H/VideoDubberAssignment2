@@ -1,7 +1,8 @@
 import { Box, Avatar } from "@mantine/core";
 import { Carousel } from "@mantine/carousel";
 import "./Addmedia.css";
-import { useCallback } from "react";
+// import { useCallback } from "react";
+import { useState, useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { SlCamrecorder } from "react-icons/sl";
@@ -10,11 +11,20 @@ import { CiChat1 } from "react-icons/ci";
 import { RiVoiceprintFill } from "react-icons/ri";
 import { BsThreeDots } from "react-icons/bs";
 
-const Addmedia = ({ setFileType }) => {
+const Addmedia = ({ setFileType, setFile }) => {
+  const [preview, setPreview] = useState(null);
+
   const onDrop = useCallback(
     (acceptedFiles) => {
       if (acceptedFiles.length > 0) {
         const file = acceptedFiles[0];
+        
+        // Create preview URL
+        const previewUrl = URL.createObjectURL(file);
+        setPreview(previewUrl);
+
+        // Set file and type
+        setFile(file);
         if (file.type.startsWith("audio")) {
           setFileType("audio");
         } else if (file.type.startsWith("video")) {
@@ -22,12 +32,37 @@ const Addmedia = ({ setFileType }) => {
         }
       }
     },
-    [setFileType]
+    [setFileType, setFile]
   );
+
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
+
   return (
     <Box className="addmedia">
       <h1>Add Media</h1>
+      {/* Add preview section */}
+    {/* {preview && (
+      <Box className="media-preview">
+        {preview.startsWith("blob:") && (
+          <>
+            {preview.includes("video") ? (
+              <video 
+                src={preview} 
+                controls 
+                style={{ maxWidth: '100%', maxHeight: '300px' }}
+              />
+            ) : (
+              <audio 
+                src={preview} 
+                controls 
+                style={{ width: '100%' }}
+              />
+            )}
+          </>
+        )}
+      </Box>
+    )} */}
+
       <Box className="media-filebox" {...getRootProps()}>
         <input {...getInputProps()} />
         <Box className="media-upload-icon">
@@ -178,3 +213,4 @@ const Addmedia = ({ setFileType }) => {
 };
 
 export default Addmedia;
+

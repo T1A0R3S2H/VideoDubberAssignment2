@@ -7,7 +7,9 @@ import { FaSearch } from "react-icons/fa";
 import { IoSettingsOutline } from "react-icons/io5";
 import { DiHtml5Multimedia } from "react-icons/di";
 import { MdOutlineAudiotrack } from "react-icons/md";
-import { LuSubtitles } from "react-icons/lu";
+// import { LuSubtitles } from "react-icons/lu";
+import { FaRegQuestionCircle } from "react-icons/fa"; // Placeholder icon
+
 import { CiText } from "react-icons/ci";
 import { LiaElementor } from "react-icons/lia";
 import { MdOutlineEmergencyRecording } from "react-icons/md";
@@ -53,7 +55,8 @@ const Navbar = ({ activeCard, setActiveCard }) => {
         </Center>
         <Center className={`icon-container ${activeIcon === "subtitles" ? "active" : ""}`} onClick={() => handleIconClick("subtitles")}>
           <Box className="circle">
-            <LuSubtitles className="icon" />
+            {/* <LuSubtitles className="icon" /> */}
+            <FaRegQuestionCircle className="icon" />
           </Box>
           <span>Subtitles</span>
         </Center>
